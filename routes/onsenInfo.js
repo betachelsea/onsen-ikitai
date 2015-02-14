@@ -14,8 +14,7 @@ router.get('/', function(req, res, next) {
   var callback = function(err, api_res, xml_body) {
     if (!err && api_res.statusCode === 200) {
       parseString(xml_body, function(err, result) {
-        console.log(JSON.stringify(result));
-        res.send('respond with a resource');
+        res.render('onsen_info', {onsen: result.Results.Onsen[0]});
       });
     }
   };
