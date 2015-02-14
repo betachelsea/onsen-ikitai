@@ -1,0 +1,17 @@
+{
+  "name": "setting",
+  "version": "1.0.0",
+  "description": "frontend setting",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tsuskida-sayuri",
+  "license": "MIT",
+  "devDependencies": {
+    "coffee-script": "^1.9.0",
+    "gulp": "^3.8.11",
+    "gulp-coffee": "^2.3.1",
+    "gulp-util": "^3.0.3"
+  }
+}
