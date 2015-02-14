@@ -1,0 +1,116 @@
+/* --------------------------------------------------
+    base
+-------------------------------------------------- */
+
+/* --------------------------------------------------
+    0. Resetting default margin and padding
+-------------------------------------------------- */
+body, div, dl, dt, dd, ul, ol, li,
+h1, h2, h3, h4, h5, h6,
+object, iframe, pre, code, p, blockquote,
+form, fieldset, legend,
+table, th, td, caption, tbody, tfoot, thead,
+article, aside, figure, footer, header,
+hgroup, menu, nav, section, audio, video, canvas,
+a, span, em {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+article, aside, figure, figcaption,footer,
+h1, h2, h3, h4, h5, h6, header, hgroup, menu, nav, section, canvas,
+main {
+    display: block;
+}
+
+/* --------------------------------------------------
+    1. HTML, Body, Anchor
+-------------------------------------------------- */
+html { }
+
+body { }
+
+html.osWin body { }
+
+a {
+    color: inherit;
+
+    &:hover, &:active { }
+}
+
+
+/* --------------------------------------------------
+    2. Heading, Paragraph
+-------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+
+/* --------------------------------------------------
+    3. List
+-------------------------------------------------- */
+li { list-style: none; }
+
+/* --------------------------------------------------
+    4. Table
+-------------------------------------------------- */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: inherit;
+    font-size: 100%;
+}
+
+caption, th, td {
+    font-weight: normal;
+    text-align: left;
+    vertical-align: top;
+}
+
+/* --------------------------------------------------
+    5. Form
+-------------------------------------------------- */
+fieldset { border: none; }
+input, textarea, select, label {
+    font-family: inherit;
+    font-size: 100%;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    vertical-align: middle;
+}
+label { cursor: pointer; }
+textarea { overflow: auto; }
+legend { display: none; }
+
+/* --------------------------------------------------
+    6. Other
+-------------------------------------------------- */
+img {
+    border: none;
+    -ms-interpolation-mode: bicubic;
+    vertical-align: top;
+    image-rendering: optimizeQuality;
+}
+object {
+    outline: none;
+    vertical-align: middle;
+}
+em, strong {
+    font-style: normal;
+    font-weight: bold;
+}
+small { font-size: 100%; }
+abbr, acronym {
+    border: none;
+    font-variant: normal;
+}
+q:before, q:after { content: ''; }
+address, caption, cite, code, dfn, var {
+    font-style: normal;
+    font-weight: normal;
+}
+code, pre { font-family: monospace; }
+sup { vertical-align: text-top; }
+sub { vertical-align: text-bottom; }
+hr { display: none; }
+

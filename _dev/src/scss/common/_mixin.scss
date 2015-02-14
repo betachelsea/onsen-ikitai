@@ -1,0 +1,201 @@
+/* --------------------------------------------------
+ mixin extend
+-------------------------------------------------- */
+
+/* --------------------------------------------------
+    fallback
+-------------------------------------------------- */
+@mixin inline-block {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+@mixin opacity($value) {
+    filter: alpha(opacity=$value * 100);
+    opacity: $value;
+    *zoom: 1;
+}
+
+@mixin textIndent {
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
+@mixin transform($value) {
+    transform: $value;
+    -webkit-transform: $value;
+    -moz-transform: $value;
+    -ms-transform: $value;
+    -o-transform: $value;
+}
+
+@mixin transform-origin($value) {
+    transform-origin: $value;
+    -webkit-transform-origin: $value;
+    -moz-transform-origin: $value;
+    -ms-transform-origin: $value;
+    -o-transform-origin: $value;
+}
+
+@mixin transition($value) {
+    transition: $value;
+    -webkit-transition: $value;
+    -moz-transition: $value;
+    -ms-transition: $value;
+    -o-transition: $value;
+}
+
+/* --------------------------------------------------
+    custom
+-------------------------------------------------- */
+@mixin absolute($top, $right, $bottom, $left) {
+    position: absolute;
+    bottom: $bottom;
+    left: $left;
+    right: $right;
+    top: $top;
+}
+
+@mixin backgroundBlock($url, $textIndent: false, $center: true) {
+    $width: image-width($url);
+    $height: image-height($url);
+    background-image: image-url($url);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: $width $height;
+
+    display: block;
+    height : $height;
+    width : $width;
+
+    @if $center {
+        margin: 0 auto;
+    }
+
+    @if $textIndent {
+        @include textIndent();
+    }
+}
+
+@mixin backgroundBlockRetina($url, $textIndent: false, $center: true) {
+    $width: ceil(image-width($url) / 2);
+    $height: ceil(image-height($url) / 2);
+    background: image-url($url);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: $width $height;
+
+    display: block;
+    height: $height;
+    width: $width;
+
+    @if $center {
+        margin: 0 auto;
+    }
+
+    @if $textIndent {
+        @include textIndent();
+    }
+}
+
+@mixin backgroundRetina($url, $option) {
+    $width: ceil(image-width($url) / 2);
+    $height: ceil(image-height($url) / 2);
+
+    background: image-url($url) #{$option};
+    background-size: $width $height;
+}
+
+@mixin backgroundButton($url,$center: false) {
+    $width: image-width($url);
+    $height: ceil(image-height($url) / 2);
+
+    @include textIndent();
+    height: $height;
+    width: $width;
+
+    @if $center {
+        margin: 0 auto;
+    }
+
+    a {
+        @include textIndent();
+        background: image-url($url);
+        background-position: center top;
+        background-repeat: no-repeat;
+        display: block;
+        height: $height;
+        width: $width;
+
+
+
+        &:hover { background-position: center bottom; }
+    }
+}
+
+
+@mixin backgroundFrame($url,$frame: 1) {
+    $width: image-width($url);
+    $height: ceil(image-height($url)/$frame);
+    width: $width;
+    height: $height;
+    background: image-url($url) no-repeat;
+    display: block;
+}
+
+
+@mixin stepsAnimation($name,$duration:1s,$step:2,$delay:0s,$count:infinite) {
+    animation: $name $duration steps($step,end) $delay $count;
+}
+
+@mixin stepsAnimationKeyframes($name,$image) {
+    $width: image-width($image);
+    @keyframes $name {
+        0% { background-position: 0 0; }
+        100% { background-position: -$width 0; }
+    }
+}
+
+
+/* --------------------------------------------------
+    extend
+-------------------------------------------------- */
+%clearfix:after {
+    clear : both;
+    content : '';
+    display : block;
+    height: 0;
+}
+
+%image {
+    font-size: 0;
+    line-height: 0;
+}
+
+
+/* --------------------------------------------------
+    site ui
+-------------------------------------------------- */
+@mixin imas-btn($type, $text-img, $text-position: center center, $size: 195px) {
+  $btn: (
+    'cute': (#ff74bd, #ff7fc5),
+    'passion': (#f6a71a, #f7b01f),
+    'cool': (#005fff, #006aff)
+  );
+  $colors: '';
+  @if index(map-keys($btn), $type) {
+    $colors: map-get($btn, $type);
+  } @else {
+    $colors: $type;
+  }
+  display: block;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  background: url($text-img) no-repeat $text-position nth($colors, 1);
+  box-shadow: nth($colors, 2) 0 0 0 15px inset,
+              #fff 0 0 0 18px inset,
+              #fff 0 0 50px;
+  text-indent: -9999em;
+}

@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* */
+/**----------------------------------------------
+  common
+----------------------------------------------**/
+@import "common/variable";
+@import "common/mixin";
+@import "common/base";
+@import "common/common";
+
+/**----------------------------------------------
+  common
+----------------------------------------------**/
+body ,html {
+  height: 100% !important;
+  min-height: 100%;
+}
+
+.page-wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 640px;
+  min-height: 100%;
+}
+
+/**----------------------------------------------
+  page
+----------------------------------------------**/
