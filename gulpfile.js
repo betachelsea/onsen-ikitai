@@ -14,7 +14,7 @@ gulp.task('server', function() {
 });
 
 gulp.task("clean-public", function() {
-  del(['./public/dest/**/*.css', './public/main.js']);
+  del(['./public/style.css', './public/main.js']);
 });
 
 gulp.task("compile-coffee", function() {
@@ -32,17 +32,18 @@ gulp.task("concat-js", function() {
 });
 
 gulp.task("compile-sass", function() {
+  del(['./source/dest/css/**/*.css']);
   gulp.src("source/sass/**/*.scss")
       .pipe(sass())
-      .pipe(gulp.dest('./dest/css'));
+      .pipe(gulp.dest('./source/dest/css'));
 });
 
-gulp.task("compile-css", function() {
-  gulp.src(["./dest/css/**/*.css", "!./style.css"])
+gulp.task("concat-css", function() {
+  gulp.src(["./source/dest/css/**/*.css"])
       .pipe(concat("style.css"))
       .pipe(minifyCss())
-      .pipe(gulp.dest('./'));
+      .pipe(gulp.dest('public/'));
 });
 
-gulp.task("compile", ['clean-public', 'compile-coffee', 'compile-sass', 'concat-js', 'compile-css']);
+gulp.task("compile", ['clean-public', 'compile-coffee', 'compile-sass', 'concat-js', 'concat-css']);
 gulp.task("default", ['compile', 'server']);

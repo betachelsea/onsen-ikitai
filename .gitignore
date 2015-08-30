@@ -1,6 +1,8 @@
 config/default.json
 public/main.js
+public/style.css
 source/dest/**/*.js
+source/dest/**/*.css
 
 # Node.gitignore https://github.com/github/gitignore/blob/master/Node.gitignore
 # Logs
