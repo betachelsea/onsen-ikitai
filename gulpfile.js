@@ -13,6 +13,12 @@ gulp.task('server', function() {
   server.run({ file: './app.js' });
 });
 
+gulp.task('watch', function() {
+  gulp.watch(['./source/coffee/**/*.coffee'], ['compile-coffee', 'concat-js']);
+  gulp.watch(['./source/sass/**/*.scss'], ['compile-sass', 'concat-css']);
+  gulp.watch(['./public/main.js', './public/style.css'], ['server']);
+});
+
 gulp.task("clean-public", function() {
   del(['./public/style.css', './public/main.js']);
 });
@@ -46,4 +52,4 @@ gulp.task("concat-css", function() {
 });
 
 gulp.task("compile", ['clean-public', 'compile-coffee', 'compile-sass', 'concat-js', 'concat-css']);
-gulp.task("default", ['compile', 'server']);
+gulp.task("default", ['compile', 'server', 'watch']);
