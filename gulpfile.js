@@ -14,20 +14,21 @@ gulp.task('server', function() {
 });
 
 gulp.task("clean-public", function() {
-  del(['./public/dest/**/*.css', './public/dest/**/*.js'])
+  del(['./public/dest/**/*.css', './public/main.js']);
 });
 
 gulp.task("compile-coffee", function() {
+  del(['./source/dest/js/**/*.js']);
   gulp.src("source/coffee/**/*.coffee")
       .pipe(coffee())
-      .pipe(gulp.dest('./public/dest'));
+      .pipe(gulp.dest('./source/dest/js'));
 });
 
-gulp.task("compile-js", function() {
-  gulp.src(["./public/dest/**/*.js"])
-      .pipe(concat("application.js"))
+gulp.task("concat-js", function() {
+  gulp.src(["./source/dest/js/**/*.js"])
+      .pipe(concat("main.js"))
       .pipe(uglify({preserveComments: 'some'}))
-      .pipe(gulp.dest('./'));
+      .pipe(gulp.dest('public/'));
 });
 
 gulp.task("compile-sass", function() {
@@ -43,5 +44,5 @@ gulp.task("compile-css", function() {
       .pipe(gulp.dest('./'));
 });
 
-gulp.task("compile", ['clean-public', 'compile-coffee', 'compile-sass', 'compile-js', 'compile-css']);
+gulp.task("compile", ['clean-public', 'compile-coffee', 'compile-sass', 'concat-js', 'compile-css']);
 gulp.task("default", ['compile', 'server']);

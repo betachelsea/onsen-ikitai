@@ -1,4 +1,6 @@
 config/default.json
+public/main.js
+source/dest/**/*.js
 
 # Node.gitignore https://github.com/github/gitignore/blob/master/Node.gitignore
 # Logs
